@@ -1,0 +1,27 @@
+<div class="pagination">
+  <div class="navigation_buttons">
+    <button
+      *ngIf="isPageGreaterThanTheFirstPage()"
+      data-testid="pagination_previous_button"
+      (click)="onPreviousButtonClick()">
+      &lt; Previous
+    </button>
+    <button
+      *ngIf="isPageSmallerThanTheLastPage()"
+      data-testid="pagination_next_button"
+      (click)="onNextButtonClick()">
+      Next &gt;
+    </button>
+  </div>
+  <div class="page_selection">
+    <input
+      data-testid="page_selector"
+      type="number"
+      min="1"
+      [value]="currentPage"
+      [max]="numberOfPages"
+      class="page_selector"
+      (input)="onPagePaginationInputChange($event)" />
+    <h4 class="number_of_pages_label">of {{ numberOfPages }}</h4>
+  </div>
+</div>
