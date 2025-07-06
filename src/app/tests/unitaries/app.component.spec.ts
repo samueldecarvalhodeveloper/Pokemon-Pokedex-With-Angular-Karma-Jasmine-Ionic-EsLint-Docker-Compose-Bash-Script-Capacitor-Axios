@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { provideRouter } from "@angular/router";
-import AppComponent from "src/app/app_configuration/app.component";
+import AppComponent from "../../app_configuration/app_configuration.component";
 
 describe("Test Screen App", () => {
   let fixture: ComponentFixture<AppComponent>;
