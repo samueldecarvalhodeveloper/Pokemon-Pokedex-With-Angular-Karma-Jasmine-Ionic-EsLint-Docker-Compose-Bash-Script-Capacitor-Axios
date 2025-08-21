@@ -1,0 +1,51 @@
+<section class="pokemon_listing_page">
+  <pokemon-banner></pokemon-banner>
+  <section class="pokemon_listing_section">
+    <p class="description">
+      Nec bibendum pellentesque massa eget non sem in.
+      <br />
+      Nulla amet id congue cursus lorem
+    </p>
+    <pokemon-searching-input
+      [value]="searchingPokemonName"
+      (change)="searchingPokemonName = $event">
+    </pokemon-searching-input>
+    <ng-container *ngIf="isMatrixOfPokemonDataLoaded">
+      <div
+        class="pokemons_listing"
+        *ngIf="searchingPokemonName">
+        <div
+          *ngFor="let pokemon of getPokemonsFilteredByName(); let index = index"
+          class="pokemon_card_container">
+          <a
+            [href]="'/pokemon/' + pokemon.id + '/'"
+            class="pokemon_link">
+            <pokemon-card [pokemonData]="pokemon"></pokemon-card>
+          </a>
+        </div>
+      </div>
+      <ng-container *ngIf="!searchingPokemonName">
+        <div class="pokemons_listing">
+          <div
+            *ngFor="let pokemon of matrixOfPokemonData[currentPage - 1]; let index = index"
+            class="pokemon_card_container">
+            <a
+              [href]="'/pokemon/' + pokemon.id + '/'"
+              class="pokemon_link">
+              <pokemon-card [pokemonData]="pokemon"></pokemon-card>
+            </a>
+          </div>
+        </div>
+        <page-pagination
+          [currentPage]="currentPage"
+          [numberOfPages]="matrixOfPokemonData.length"
+          (previousButtonClick)="currentPage = $event"
+          (nextButtonClick)="currentPage = $event"
+          (pagePaginationInputChange)="currentPage = $event">
+        </page-pagination>
+      </ng-container>
+    </ng-container>
+    <loading-indicator *ngIf="!isMatrixOfPokemonDataLoaded"></loading-indicator>
+  </section>
+  <smooth-scroller></smooth-scroller>
+</section>
