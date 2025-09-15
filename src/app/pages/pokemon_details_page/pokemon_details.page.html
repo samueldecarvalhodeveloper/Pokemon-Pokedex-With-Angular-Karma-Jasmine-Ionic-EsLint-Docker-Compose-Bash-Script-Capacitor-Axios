@@ -1,0 +1,18 @@
+<section class="pokemon_details">
+  <section class="content">
+    <pokemon-card
+      *ngIf="isPokemonDataLoaded"
+      [pokemonData]="pokemonData">
+    </pokemon-card>
+    <loading-indicator *ngIf="!isPokemonDataLoaded"></loading-indicator>
+    <p class="description">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eu orci
+      ligula. Proin condimentum metus in dui lobortis, a cursus purus dapibus.
+    </p>
+    <a
+      href="/"
+      class="return_link">
+      Back To Home ->
+    </a>
+  </section>
+</section>

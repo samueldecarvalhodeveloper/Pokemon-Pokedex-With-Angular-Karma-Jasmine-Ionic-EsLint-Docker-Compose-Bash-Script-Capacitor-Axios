@@ -1,0 +1,16 @@
+<article class="pokemon_card">
+  <div [class]="'image ' + pokemonData.types[0].toLowerCase() + '_background'">
+    <img [src]="pokemonData.image" />
+  </div>
+  <div class="description">
+    <h3 class="id">#{{ getFormattedId(pokemonData.id) }}</h3>
+    <h2 class="name">{{ pokemonData.name }}</h2>
+    <ul class="types">
+      <li
+        *ngFor="let type of pokemonData.types; let i = index"
+        [class]="'type ' + type.toLowerCase()">
+        {{ type }}
+      </li>
+    </ul>
+  </div>
+</article>

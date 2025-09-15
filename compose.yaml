@@ -1,0 +1,30 @@
+services:
+  testing:
+    build:
+      context: .
+      dockerfile: ./dockerfile.testing
+      tags:
+        - testing
+    ports:
+      - 9876:9876
+    network_mode: "host"
+
+  development:
+    build:
+      context: .
+      dockerfile: ./dockerfile.development
+      tags:
+        - development
+    ports:
+      - 4200:4200
+    network_mode: "host"
+
+  production:
+    build:
+      context: .
+      dockerfile: ./dockerfile.production
+      tags:
+        - production
+    ports:
+      - 3000:3000
+    network_mode: "host"
